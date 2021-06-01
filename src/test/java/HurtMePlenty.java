@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,7 @@ public class HurtMePlenty {
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetup(){
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
 
     }
@@ -70,8 +72,8 @@ public class HurtMePlenty {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#select_option_376 > .md-text")));
         selectMachineType.click();
 
-        WebElement addGPU = driver.findElement(By.cssSelector(".ng-scope:nth-child(10) .md-container"));
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".ng-scope:nth-child(10) .md-container")));
+        WebElement addGPU = driver.findElement(By.cssSelector(".ng-scope:nth-child(11) .md-container"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".ng-scope:nth-child(11) .md-container")));
         addGPU.click();
 
         WebElement searchNumberOfGPU = driver.findElement(By.cssSelector("#select_value_label_408 > span:nth-child(1)"));
@@ -109,8 +111,8 @@ public class HurtMePlenty {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#select_option_100 > .md-text")));
         selectCommitedUsage.click();
 
-        WebElement clickAddToEstimate = driver.findElement(By.cssSelector(".layout-align-end-start:nth-child(17) > .md-raised"));
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".layout-align-end-start:nth-child(17) > .md-raised")));
+        WebElement clickAddToEstimate = driver.findElement(By.cssSelector(".layout-align-end-start:nth-child(18) > .md-raised"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".layout-align-end-start:nth-child(18) > .md-raised")));
         clickAddToEstimate.click();
 
         Assert.assertEquals(driver.getPageSource().contains("VM class: regular"), true, "No found text: VM class: regular" );

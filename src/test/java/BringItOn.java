@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ public class BringItOn {
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetup(){
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
 
     }
