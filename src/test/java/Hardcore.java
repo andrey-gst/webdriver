@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,10 +14,11 @@ public class Hardcore {
     private WebDriver driver;
     private WebDriverWait wait;
 
+
     @BeforeMethod(alwaysRun = true)
     public void browserSetup(){
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-
     }
 
     @Test
@@ -26,9 +28,11 @@ public class Hardcore {
 
         driver.get("https://cloud.google.com/");
         driver.manage().window().maximize();
+
         WebElement searchInput = driver.findElement(By.name("q"));
         searchInput.sendKeys("Google Cloud Platform Pricing Calculator");
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Google Cloud Platform Pricing Calculator")));
         driver.findElement(By.linkText("Google Cloud Platform Pricing Calculator")).click();
 
@@ -69,8 +73,8 @@ public class Hardcore {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#select_option_376 > .md-text")));
         selectMachineType.click();
 
-        WebElement addGPU = driver.findElement(By.cssSelector(".ng-scope:nth-child(10) .md-container"));
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".ng-scope:nth-child(10) .md-container")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".ng-scope:nth-child(11) .md-container")));
+        WebElement addGPU = driver.findElement(By.cssSelector(".ng-scope:nth-child(11) .md-container"));
         addGPU.click();
 
         WebElement searchNumberOfGPU = driver.findElement(By.cssSelector("#select_value_label_408 > span:nth-child(1)"));
@@ -108,8 +112,8 @@ public class Hardcore {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#select_option_100 > .md-text")));
         selectCommitedUsage.click();
 
-        WebElement clickAddToEstimate = driver.findElement(By.cssSelector(".layout-align-end-start:nth-child(17) > .md-raised"));
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".layout-align-end-start:nth-child(17) > .md-raised")));
+        WebElement clickAddToEstimate = driver.findElement(By.cssSelector(".layout-align-end-start:nth-child(18) > .md-raised"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".layout-align-end-start:nth-child(18) > .md-raised")));
         clickAddToEstimate.click();
 
         WebElement searchEmailEstimateButton = driver.findElement(By.id("email_quote"));
